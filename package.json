@@ -1,0 +1,26 @@
+{
+    "name": "task17-news-backend",
+    "version": "1.0.0",
+    "description": "News portal backend with authentication and public news APIs",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js",
+        "check": "node --check server.js && node --check src/app.js"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.9.5",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.9"
+    }
+}
