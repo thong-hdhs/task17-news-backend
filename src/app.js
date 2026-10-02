@@ -1,7 +1,7 @@
 const express = require("express");
-const path = require("path");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger");
+const uploadsDirectory = require("./config/uploads");
 
 const authRoutes = require("./routes/authRoutes");
 const newsRoutes = require("./routes/newsRoutes");
@@ -15,14 +15,14 @@ const app = express();
 
 app.use(express.json({ limit: "1mb" }));
 
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+app.use("/uploads", express.static(uploadsDirectory));
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/auth", authRoutes);
 app.use("/api/news", newsRoutes);
 
 app.use("/api/admin/news", adminNewsRoutes);
-app.use("/api/files", fileRoutes);
+app.use("/api/admin/files", fileRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

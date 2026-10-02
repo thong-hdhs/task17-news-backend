@@ -4,7 +4,13 @@ module.exports = (error, req, res, next) => {
     let status = error.status || 500;
     let message = error.message || "Internal server error";
 
-    if (error.name === "ValidationError" || error.name === "CastError") {
+    if (error.name === "MulterError") {
+        status = error.code === "LIMIT_FILE_SIZE" ? 413 : 400;
+        message =
+            error.code === "LIMIT_FILE_SIZE"
+                ? "File exceeds the 10 MB limit"
+                : "Invalid file upload";
+    } else if (error.name === "ValidationError" || error.name === "CastError") {
         status = 400;
         message =
             error.name === "ValidationError"

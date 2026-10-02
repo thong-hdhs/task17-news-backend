@@ -7,7 +7,8 @@ const options = {
         info: {
             title: "News API",
             version: "1.0.0",
-            description: "Authentication and public news endpoints. ",
+            description:
+                "Authentication, public news and admin management APIs.",
         },
         servers: [
             {
@@ -16,6 +17,13 @@ const options = {
             },
         ],
         components: {
+            securitySchemes: {
+                BearerAuth: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT",
+                },
+            },
             schemas: {
                 SuccessResponse: {
                     type: "object",
